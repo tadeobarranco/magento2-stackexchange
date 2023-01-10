@@ -2,6 +2,7 @@
 
 namespace Barranco\StackExchange\Console\Command;
 
+use Psr\Log\LoggerInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -9,6 +10,20 @@ use Magento\Framework\Console\Cli;
 
 class DevStackExchangeRunCommand extends Command
 {
+    private LoggerInterface $logger;
+
+    /**
+     * Class constructor
+     *
+     * @param \Psr\Log\LoggerInterface $logger
+     */
+    public function __construct(
+        LoggerInterface $logger
+    ) {
+        parent::__construct();
+        $this->logger = $logger;
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -25,7 +40,10 @@ class DevStackExchangeRunCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $output->writeln('<info>Success</info>');
+        if ($this->logger instanceof LoggerInterface) {
+            $output->writeln('<info>Successfully created a new object using DI</info>');
+            $this->logger->info('Successfully created a new object using DI');
+        }
 
         return Cli::RETURN_SUCCESS;
     }
