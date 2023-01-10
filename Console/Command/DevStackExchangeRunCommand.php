@@ -2,9 +2,11 @@
 
 namespace Barranco\StackExchange\Console\Command;
 
+use Psr\Log\LoggerInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Console\Cli;
 
 class DevStackExchangeRunCommand extends Command
@@ -25,7 +27,12 @@ class DevStackExchangeRunCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $output->writeln('<info>Success</info>');
+        $logger = ObjectManager::getInstance()->get(LoggerInterface::class);
+
+        if ($logger instanceof LoggerInterface) {
+            $output->writeln('<info>Successfully created a new object using ObjectManager</info>');
+            $logger->info('Successfully created a new object using ObjectManager');
+        }
 
         return Cli::RETURN_SUCCESS;
     }
