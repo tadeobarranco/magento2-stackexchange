@@ -10,6 +10,7 @@
         <arguments>
             <argument name="commands" xsi:type="array">
                 <item name="commandDevStackExchangeRun" xsi:type="object">Barranco\StackExchange\Console\Command\DevStackExchangeRunCommand</item>
+                <item name="commandDevStackExchangeLog" xsi:type="object">Barranco\StackExchange\Console\Command\DevStackExchangeLogCommand</item>
             </argument>
         </arguments>
     </type>
