@@ -2,6 +2,7 @@
 
 namespace Barranco\StackExchange\Console\Command;
 
+use Psr\Log\LoggerInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -11,6 +12,21 @@ use Magento\Framework\Console\Cli;
 class DevStackExchangeLogCommand extends Command
 {
     public const ARGUMENT_LOG_LEVEL = 'level';
+
+    private LoggerInterface $logger;
+
+    /**
+     * Class constructor
+     *
+     * @param \Psr\Log\LoggerInterface $logger
+     */
+    public function __construct(
+        LoggerInterface $logger
+    ) {
+        parent::__construct();
+        $this->logger = $logger;
+    }
+
 
     /**
      * {@inheritdoc}
