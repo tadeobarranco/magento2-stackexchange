@@ -27,7 +27,6 @@ class DevStackExchangeLogCommand extends Command
         $this->logger = $logger;
     }
 
-
     /**
      * {@inheritdoc}
      */
@@ -60,34 +59,42 @@ class DevStackExchangeLogCommand extends Command
 
         switch ($logLevel) {
             case 'debug':
+                $this->logger->debug('Debug data logged');
                 $this->writeSwitchCaseOutput($output, $logLevel);
                 break;
 
             case 'info':
+                $this->logger->info('Info data logged');
                 $this->writeSwitchCaseOutput($output, $logLevel);
                 break;
 
             case 'notice':
+                $this->logger->notice('Notice data logged');
                 $this->writeSwitchCaseOutput($output, $logLevel);
                 break;
 
             case 'warning':
+                $this->logger->warning('Warning data logged');
                 $this->writeSwitchCaseOutput($output, $logLevel);
                 break;
 
             case 'error':
+                $this->logger->error('Error data logged');
                 $this->writeSwitchCaseOutput($output, $logLevel);
                 break;
 
             case 'critical':
+                $this->logger->critical('Critical data logged');
                 $this->writeSwitchCaseOutput($output, $logLevel);
                 break;
 
             case 'alert':
+                $this->logger->alert('Alert data logged');
                 $this->writeSwitchCaseOutput($output, $logLevel);
                 break;
 
             case 'emergency':
+                $this->logger->emergency('Emergency data logged');
                 $this->writeSwitchCaseOutput($output, $logLevel);
                 break;
 
@@ -95,7 +102,6 @@ class DevStackExchangeLogCommand extends Command
                 $this->writeSwitchCaseOutput($output);
                 break;
         }
-
 
         return Cli::RETURN_SUCCESS;
     }
