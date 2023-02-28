@@ -14,4 +14,21 @@
             </argument>
         </arguments>
     </type>
+    <virtualType name="Barranco\StackExchange\Model\VirtualLoggerHandler" type="Magento\Framework\Logger\Handler\Base">
+        <arguments>
+            <argument name="fileName" xsi:type="string">/var/log/stackexchange.log</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Barranco\StackExchange\Model\VirtualLogger" type="Magento\Framework\Logger\Monolog">
+        <arguments>
+            <argument name="handlers" xsi:type="array">
+                <item name="system" xsi:type="object">Barranco\StackExchange\Model\VirtualLoggerHandler</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Barranco\StackExchange\Console\Command\DevStackExchangeLogCommand">
+        <arguments>
+            <argument name="logger" xsi:type="object">Barranco\StackExchange\Model\VirtualLogger</argument>
+        </arguments>
+    </type>
 </config>
