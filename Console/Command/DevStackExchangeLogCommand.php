@@ -59,12 +59,12 @@ class DevStackExchangeLogCommand extends Command
 
         switch ($logLevel) {
             case 'debug':
-                $this->logger->debug('Debug data logged');
+                $this->logger->debug(var_export([$output, $logLevel], true));
                 $this->writeSwitchCaseOutput($output, $logLevel);
                 break;
 
             case 'info':
-                $this->logger->info('Info data logged');
+                $this->logger->info(sprintf('Successfully %s data logged', $logLevel));
                 $this->writeSwitchCaseOutput($output, $logLevel);
                 break;
 
@@ -79,7 +79,14 @@ class DevStackExchangeLogCommand extends Command
                 break;
 
             case 'error':
-                $this->logger->error('Error data logged');
+                $this->logger->error(
+                    sprintf(
+                        'Log level \'%s\' has an error. At %s in the %s function',
+                        $logLevel,
+                        __CLASS__,
+                        __FUNCTION__
+                    )
+                );
                 $this->writeSwitchCaseOutput($output, $logLevel);
                 break;
 
