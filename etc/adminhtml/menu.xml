@@ -6,6 +6,6 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
-        <add id="Barranco_StackExchange::wishlist" title="Wishlist" translate="title" module="Barranco_StackExchange" sortOrder="100" parent="Magento_Reports::report_marketing" action="stackexchange/reports/wishlist" resource="Barranco_StackExchange::wishlist" />
+        <add id="Barranco_StackExchange::wishlist" title="Wishlists" translate="title" module="Barranco_StackExchange" sortOrder="100" parent="Magento_Reports::report_marketing" action="stackexchange/reports/wishlist" resource="Barranco_StackExchange::wishlist" />
     </menu>
 </config>

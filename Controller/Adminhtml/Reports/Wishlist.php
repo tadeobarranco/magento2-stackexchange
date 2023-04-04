@@ -37,7 +37,7 @@ class Wishlist extends Action implements HttpGetActionInterface
     {
         $page = $this->pageFactory->create();
         $page->setActiveMenu('Barranco_StackExchange::wishlist');
-        $page->getConfig()->getTitle()->prepend(__('Wishlist'));
+        $page->getConfig()->getTitle()->prepend(__('Wishlists'));
 
         return $page;
     }
