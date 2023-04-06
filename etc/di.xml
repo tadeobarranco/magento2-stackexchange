@@ -31,4 +31,17 @@
             <argument name="logger" xsi:type="object">Barranco\StackExchange\Model\VirtualLogger</argument>
         </arguments>
     </type>
+    <virtualType name="Barranco\StackExchange\Model\ResourceModel\Wishlist\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">wishlist</argument>
+            <argument name="resourceModel" xsi:type="string">Magento\Wishlist\Model\ResourceModel\Wishlist</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="wishlist_listing_data_source" xsi:type="string">Barranco\StackExchange\Model\ResourceModel\Wishlist\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
 </config>
