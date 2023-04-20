@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Barranco StackExchange
+ */
+-->
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">wishlist_listing.wishlist_listing_data_source</item>
+            <item name="deps" xsi:type="string">wishlist_listing.wishlist_listing_data_source</item>
+        </item>
+        <item name="spinner" xsi:type="string">wishlist_columns</item>
+    </argument>
+    <columns name="wishlist_columns">
+        <column name="wishlist_id">
+            <settings>
+                <label translate="true">ID</label>
+            </settings>
+        </column>
+        <column name="customer_id">
+            <settings>
+                <label translate="true">Customer</label>
+            </settings>
+        </column>
+        <column name="shared">
+            <settings>
+                <label translate="true">Shared</label>
+            </settings>
+        </column>
+        <column name="sharing_code">
+            <settings>
+                <label translate="true">Sharing Code</label>
+            </settings>
+        </column>
+        <column name="updated_at">
+            <settings>
+                <label translate="true">Updated At</label>
+            </settings>
+        </column>
+    </columns>
+    <dataSource name="wishlist_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <updateUrl path="mui/index/render"/>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">wishlist_id</param>
+            </storageConfig>
+        </settings>
+        <dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider" name="wishlist_listing_data_source">
+            <settings>
+                <requestFieldName>wishlist_id</requestFieldName>
+                <primaryFieldName>wishlist_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+</listing>
