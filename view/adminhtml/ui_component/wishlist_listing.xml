@@ -12,10 +12,17 @@
         </item>
         <item name="spinner" xsi:type="string">wishlist_columns</item>
     </argument>
+    <listingToolbar name="listing_top">
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+        <filters name="listing_filters"/>
+        <paging name="listing_paging"/>
+    </listingToolbar>
     <columns name="wishlist_columns">
         <column name="wishlist_id">
             <settings>
                 <label translate="true">ID</label>
+                <filter>textRange</filter>
             </settings>
         </column>
         <column name="customer_id" class="Barranco\StackExchange\Ui\Component\Listing\Column\Customer">
@@ -28,16 +35,19 @@
                 <dataType>select</dataType>
                 <label translate="true">Shared</label>
                 <options class="Magento\Config\Model\Config\Source\Yesno"/>
+                <filter>select</filter>
             </settings>
         </column>
         <column name="sharing_code">
             <settings>
                 <label translate="true">Sharing Code</label>
+                <filter>text</filter>
             </settings>
         </column>
         <column name="updated_at" component="Magento_Ui/js/grid/columns/date">
             <settings>
                 <label translate="true">Updated At</label>
+                <filter>dateRange</filter>
             </settings>
         </column>
     </columns>
