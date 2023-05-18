@@ -16,9 +16,31 @@
         <bookmark name="bookmarks"/>
         <columnsControls name="columns_controls"/>
         <filters name="listing_filters"/>
+        <massaction name="listing_massaction" component="Magento_Ui/js/grid/tree-massactions">
+            <settings>
+                <selectProvider>wishlist_listing.wishlist_listing.wishlist_columns.ids</selectProvider>
+                <indexField>wishlist_id</indexField>
+            </settings>
+            <action name="delete">
+                <settings>
+                    <type>delete</type>
+                    <label translate="true">Delete</label>
+                    <url path="*/wishlist/massDelete"/>
+                    <confirm>
+                        <title translate="true">Delete wishlists</title>
+                        <message translate="true">Are you sure you want to delete the selected wishlists?</message>
+                    </confirm>
+                </settings>
+            </action>
+        </massaction>
         <paging name="listing_paging"/>
     </listingToolbar>
     <columns name="wishlist_columns">
+        <selectionsColumn name="ids">
+            <settings>
+                <indexField>wishlist_id</indexField>
+            </settings>
+        </selectionsColumn>
         <column name="wishlist_id">
             <settings>
                 <label translate="true">ID</label>
