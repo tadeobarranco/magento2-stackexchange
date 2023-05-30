@@ -51,6 +51,7 @@
         <column name="customer_id" class="Barranco\StackExchange\Ui\Component\Listing\Column\Customer">
             <settings>
                 <label translate="true">Customer</label>
+                <filter>text</filter>
             </settings>
         </column>
         <column name="shared" component="Magento_Ui/js/grid/columns/select">
@@ -81,7 +82,7 @@
                 <param name="indexField" xsi:type="string">wishlist_id</param>
             </storageConfig>
         </settings>
-        <dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider" name="wishlist_listing_data_source">
+        <dataProvider class="Barranco\StackExchange\Ui\DataProvider\Wishlist\WishlistDataProvider" name="wishlist_listing_data_source">
             <settings>
                 <requestFieldName>wishlist_id</requestFieldName>
                 <primaryFieldName>wishlist_id</primaryFieldName>
