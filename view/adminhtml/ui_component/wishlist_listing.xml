@@ -48,6 +48,27 @@
         <paging name="listing_paging"/>
     </listingToolbar>
     <columns name="wishlist_columns">
+        <settings>
+            <childDefaults>
+                <param name="fieldAction" xsi:type="array">
+                    <item name="provider" xsi:type="string">wishlist_listing.wishlist_listing.wishlist_columns_editor</item>
+                    <item name="target" xsi:type="string">startEdit</item>
+                    <item name="params" xsi:type="array">
+                        <item name="0" xsi:type="string">${ $.$data.rowIndex }</item>
+                        <item name="1" xsi:type="boolean">true</item>
+                    </item>
+                </param>
+            </childDefaults>
+            <editorConfig>
+                <param name="clientConfig" xsi:type="array">
+                    <item name="saveUrl" xsi:type="url" path="*/wishlist/edit"/>
+                    <item name="validateBeforeSave" xsi:type="boolean">false</item>
+                </param>
+                <param name="selectProvider" xsi:type="string">wishlist_listing.wishlist_listing.wishlist_columns.ids</param>
+                <param name="indexField" xsi:type="string">wishlist_id</param>
+                <param name="enabled" xsi:type="boolean">true</param>
+            </editorConfig>
+        </settings>
         <selectionsColumn name="ids">
             <settings>
                 <indexField>wishlist_id</indexField>
@@ -71,12 +92,24 @@
                 <label translate="true">Shared</label>
                 <options class="Magento\Config\Model\Config\Source\Yesno"/>
                 <filter>select</filter>
+                <editor>
+                    <editorType>select</editorType>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">true</rule>
+                    </validation>
+                </editor>
             </settings>
         </column>
         <column name="sharing_code">
             <settings>
                 <label translate="true">Sharing Code</label>
                 <filter>text</filter>
+                <editor>
+                    <editorType>text</editorType>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">true</rule>
+                    </validation>
+                </editor>
             </settings>
         </column>
         <column name="updated_at" component="Magento_Ui/js/grid/columns/date">
