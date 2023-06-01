@@ -11,6 +11,14 @@
             <item name="deps" xsi:type="string">wishlist_listing.wishlist_listing_data_source</item>
         </item>
         <item name="spinner" xsi:type="string">wishlist_columns</item>
+        <item name="buttons" xsi:type="array">
+            <item name="add" xsi:type="array">
+                <item name="name" xsi:type="string">add</item>
+                <item name="label" xsi:type="string" translate="true">Add New Wishlist</item>
+                <item name="url" xsi:type="string">*/wishlist/add</item>
+                <item name="class" xsi:type="string">primary</item>
+            </item>
+        </item>
     </argument>
     <listingToolbar name="listing_top">
         <bookmark name="bookmarks"/>
