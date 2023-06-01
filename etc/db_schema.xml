@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Barranco StackExchange
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="wishlist">
+        <index referenceId="WISHLIST_SHARING_CODE" indexType="fulltext">
+            <column name="sharing_code"/>
+        </index>
+    </table>
+</schema>

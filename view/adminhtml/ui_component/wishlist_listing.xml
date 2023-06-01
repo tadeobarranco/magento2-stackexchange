@@ -1,0 +1,144 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Barranco StackExchange
+ */
+-->
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">wishlist_listing.wishlist_listing_data_source</item>
+            <item name="deps" xsi:type="string">wishlist_listing.wishlist_listing_data_source</item>
+        </item>
+        <item name="spinner" xsi:type="string">wishlist_columns</item>
+        <item name="buttons" xsi:type="array">
+            <item name="add" xsi:type="array">
+                <item name="name" xsi:type="string">add</item>
+                <item name="label" xsi:type="string" translate="true">Add New Wishlist</item>
+                <item name="url" xsi:type="string">*/wishlist/add</item>
+                <item name="class" xsi:type="string">primary</item>
+            </item>
+        </item>
+    </argument>
+    <listingToolbar name="listing_top">
+        <settings>
+            <sticky>true</sticky>
+        </settings>
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+        <filterSearch name="fulltext"/>
+        <filters name="listing_filters"/>
+        <massaction name="listing_massaction" component="Magento_Ui/js/grid/tree-massactions">
+            <settings>
+                <selectProvider>wishlist_listing.wishlist_listing.wishlist_columns.ids</selectProvider>
+                <indexField>wishlist_id</indexField>
+            </settings>
+            <action name="delete">
+                <settings>
+                    <type>delete</type>
+                    <label translate="true">Delete</label>
+                    <url path="*/wishlist/massDelete"/>
+                    <confirm>
+                        <title translate="true">Delete wishlists</title>
+                        <message translate="true">Are you sure you want to delete the selected wishlists?</message>
+                    </confirm>
+                </settings>
+            </action>
+        </massaction>
+        <paging name="listing_paging"/>
+    </listingToolbar>
+    <columns name="wishlist_columns">
+        <settings>
+            <childDefaults>
+                <param name="fieldAction" xsi:type="array">
+                    <item name="provider" xsi:type="string">wishlist_listing.wishlist_listing.wishlist_columns_editor</item>
+                    <item name="target" xsi:type="string">startEdit</item>
+                    <item name="params" xsi:type="array">
+                        <item name="0" xsi:type="string">${ $.$data.rowIndex }</item>
+                        <item name="1" xsi:type="boolean">true</item>
+                    </item>
+                </param>
+            </childDefaults>
+            <editorConfig>
+                <param name="clientConfig" xsi:type="array">
+                    <item name="saveUrl" xsi:type="url" path="*/wishlist/edit"/>
+                    <item name="validateBeforeSave" xsi:type="boolean">false</item>
+                </param>
+                <param name="selectProvider" xsi:type="string">wishlist_listing.wishlist_listing.wishlist_columns.ids</param>
+                <param name="indexField" xsi:type="string">wishlist_id</param>
+                <param name="enabled" xsi:type="boolean">true</param>
+            </editorConfig>
+        </settings>
+        <selectionsColumn name="ids">
+            <settings>
+                <indexField>wishlist_id</indexField>
+            </settings>
+        </selectionsColumn>
+        <column name="wishlist_id">
+            <settings>
+                <label translate="true">ID</label>
+                <filter>textRange</filter>
+            </settings>
+        </column>
+        <column name="customer_id" class="Barranco\StackExchange\Ui\Component\Listing\Column\Customer">
+            <settings>
+                <label translate="true">Customer</label>
+                <filter>text</filter>
+            </settings>
+        </column>
+        <column name="shared" component="Magento_Ui/js/grid/columns/select">
+            <settings>
+                <dataType>select</dataType>
+                <label translate="true">Shared</label>
+                <options class="Magento\Config\Model\Config\Source\Yesno"/>
+                <filter>select</filter>
+                <editor>
+                    <editorType>select</editorType>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">true</rule>
+                    </validation>
+                </editor>
+            </settings>
+        </column>
+        <column name="sharing_code">
+            <settings>
+                <label translate="true">Sharing Code</label>
+                <filter>text</filter>
+                <editor>
+                    <editorType>text</editorType>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">true</rule>
+                    </validation>
+                </editor>
+            </settings>
+        </column>
+        <column name="updated_at" component="Magento_Ui/js/grid/columns/date">
+            <settings>
+                <label translate="true">Updated At</label>
+                <filter>dateRange</filter>
+            </settings>
+        </column>
+        <actionsColumn name="actions" class="Barranco\StackExchange\Ui\Component\Listing\Column\ViewAction">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="viewUrlPath" xsi:type="string">*/wishlist/view</item>
+                    <item name="urlEntityParamName" xsi:type="string">wishlist_id</item>
+                </item>
+            </argument>
+        </actionsColumn>
+    </columns>
+    <dataSource name="wishlist_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <updateUrl path="mui/index/render"/>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">wishlist_id</param>
+            </storageConfig>
+        </settings>
+        <dataProvider class="Barranco\StackExchange\Ui\DataProvider\Wishlist\WishlistDataProvider" name="wishlist_listing_data_source">
+            <settings>
+                <requestFieldName>wishlist_id</requestFieldName>
+                <primaryFieldName>wishlist_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+</listing>
