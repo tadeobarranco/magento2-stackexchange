@@ -118,6 +118,14 @@
                 <filter>dateRange</filter>
             </settings>
         </column>
+        <actionsColumn name="actions" class="Barranco\StackExchange\Ui\Component\Listing\Column\ViewAction">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="viewUrlPath" xsi:type="string">*/wishlist/view</item>
+                    <item name="urlEntityParamName" xsi:type="string">wishlist_id</item>
+                </item>
+            </argument>
+        </actionsColumn>
     </columns>
     <dataSource name="wishlist_listing_data_source" component="Magento_Ui/js/grid/provider">
         <settings>

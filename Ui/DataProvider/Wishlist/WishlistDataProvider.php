@@ -20,9 +20,9 @@ class WishlistDataProvider extends DataProvider
     /**
      * Class constructor
      *
-     * @param $name
-     * @param $primaryFieldName
-     * @param $requestFieldName
+     * @param string $name
+     * @param string $primaryFieldName
+     * @param string $requestFieldName
      * @param ReportingInterface $reporting
      * @param SearchCriteriaBuilder $searchCriteriaBuilder
      * @param RequestInterface $request
